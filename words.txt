@@ -1,0 +1,5 @@
+int func(int a, int b){
+    System.out.println("jhi");
+    a=3;
+    b = 4;
+}
