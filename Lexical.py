@@ -5,4 +5,3 @@ open_symbols={'{':'LB','(':'LPAREN','[':'LSB'}
 close_symbols={'}':'RB',')':'RPAREN',']':'RSB'}
 
 with open('a.txt','r') as f:
-    
