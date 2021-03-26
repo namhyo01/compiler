@@ -1,5 +1,8 @@
 int func(int a, int b){
     System.out.println("jhi");
     a=3;
-    b = 4;
+    b = 45453123213212321;
+    a = 3+56
+    a = a+b
+    int ____a = true;
 }
