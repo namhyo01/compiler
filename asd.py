@@ -4,12 +4,14 @@ class FiniteAutomaton:
         self.table = {}
         self.currentState = "T0"
         self.acceptedStates = {}
+        self.transition = 0
  
     def LoadTransitionTable(self, _dfa):
         self.table = _dfa["Table"]
         self.acceptedStates.update(_dfa["AcceptedStates"])
  
-    def PeekNextState(self, _input):
+    def PeekNextState(self, _input,_dfa):
+        self.LoadTransitionTable(_dfa[self.transition])
 
         if  _input not in self.table[self.currentState]: #없다면
             return "change"
@@ -39,3 +41,4 @@ class FiniteAutomaton:
  
     def Reset(self):
         self.currentState = "T0"
+        self.transition = 0
