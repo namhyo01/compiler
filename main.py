@@ -194,6 +194,33 @@ dfa = FiniteAutomaton()
 
 with open('words.txt','r') as f:
     lines = f.readlines()
+        # brackets = [  ] # ()
+        # sbrackets = [  ] # {}
+        # lsbrackets = [  ] # []
+     
+         # if character == '(':              # 단일문자가 lines 인지 character인지 몰라서 일단 lines 라 하고 여기다 집어넣음
+        #     brackets.append('1'))       
+        # if character == ')':
+        #       if len(brackets) == 0   # 만약 () 스택에 넣어진게 없을때 )를받으면
+        #           return -1    # 오류
+        #       else       
+        #           brackets.remove('1')
+        # if character == '{':
+        #     sbrackets.append('2'))
+        # if character == '}':
+        #       if len(sbrackets) == 0      # 만약 {} 스택에 없으면
+        #            return -1              # 오류처리
+        #       else
+        #           sbrackets.remove('2')
+        # if characters == '[':
+        #     lsbrackets.append('3'))
+        # if character == ']':
+        #       if len(lsbrackets) == 0     # 만약 [] 스택에 없으면
+        #           return -1               #오류처리
+        #       else
+        #           lsbrackets.remove('3')
+
+
     for line in lines: #이 라인 을 파싱할거다
     
         for i,character in enumerate(line):
@@ -214,4 +241,8 @@ with open('words.txt','r') as f:
                 #print(dfa.GetToken(),dfa.lexeme)
                 dfa.Reset()
             #dfa.Reset()
+    
+  
 
+# if len(brackets)!=0 or len(brackets)!=0 or len(brackets)!=0 # 파일읽기가 끝났을때 스택에 하나라도 남았으면
+# return -1  # 오류처리
