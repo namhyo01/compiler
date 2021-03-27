@@ -60,6 +60,22 @@ Literal = {
     "T2":{'"':""},
     }
 }
+
+
+Single = {            # 작은따옴표 한번해봤음
+    "AcceptedStates":{
+        #"T1": "Single_Character",
+        "T2": "Single_Character",
+        
+    },
+    "Table":{
+    "T0":{'\':"T1"},
+    "T1":dict_Character,
+    "T2":{'\':""},
+    
+    }
+}
+
 ID = {
     "AcceptedStates":{
         "T1": "ID",
@@ -134,7 +150,6 @@ OtherToken={
 }
 
 
-#작은따음표 아직 ㅎ
 
 
 
