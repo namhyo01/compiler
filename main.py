@@ -50,9 +50,9 @@ whitespace = {
 Integer = {
     "AcceptedStates":{
         "T1": "Integer",
-        #"T2": "Zero",
+        "T2": "Integer",
         #"T3": "Minus",
-        "T4": "Negative integer"
+        "T4": "Integer"
     },
     "Table":{
     "T0":{"-":"T3","0":"T2","1":"T1","2":"T1","3":"T1","4":"T1","5":"T1","6":"T1","7":"T1","8":"T1","9":"T1"},
@@ -196,21 +196,21 @@ with open('words.txt','r') as f:
     for line in lines: #이 라인 을 파싱할거다
     
         for i,character in enumerate(line):
-            
-                if(i==(len(line)-1)):
-                    nextState=dfa.PeekNextState(character,transitiontable,1)
-                else:
-                    nextState=dfa.PeekNextState(character,transitiontable)
-                if(nextState=="에러"):
-                    print("에러")
-                    exit()
-                if(nextState!="finish"):
-                    #lexeme+=character
-                    dfa.SetState(nextState)
-                else:#끝난경우
-                    if(dfa.lexeme!=""):
-                        print(dfa.GetToken(),dfa.lexeme)
-                    #print(dfa.GetToken(),dfa.lexeme)
-                    dfa.Reset()
-                #dfa.Reset()
+            #print(character)
+            if(i==(len(line)-1)):
+                nextState=dfa.PeekNextState(character,transitiontable,1)
+            else:
+                nextState=dfa.PeekNextState(character,transitiontable)
+            if(nextState=="에러"):
+                print("에러")
+                exit()
+            if(nextState!="finish"):
+                #lexeme+=character
+                dfa.SetState(nextState)
+            else:#끝난경우
+                if(dfa.lexeme!=""):
+                    print(dfa.GetToken(),dfa.lexeme)
+                #print(dfa.GetToken(),dfa.lexeme)
+                dfa.Reset()
+            #dfa.Reset()
 
