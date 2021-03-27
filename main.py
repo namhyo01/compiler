@@ -6,7 +6,7 @@ letters =letter + digit
 
 dict_Literal = {key: "T1" for key in dict.fromkeys(letters).keys()}
 dict_Literal['"']="T2"
-single_string = ['!', '@', '#', '$', '%', '^', '&', '*', "(", ')', '','-','+','=','/','|','.',',','?','~','`',' ']
+single_string = ['!', '@', '#', '$', '%', '^', '&', '*', "(", ')','-','+','=','/','|','.',',','?','~','`',' ']
 letter+=['_']
 dict_identifier = {key: "T1" for key in dict.fromkeys(letter).keys()} # 숫자가 들어가냐 안들어가냐
 letters = letter + ['0','1','2','3','4','5','6','7','8','9',]
@@ -64,7 +64,7 @@ Integer = {
 }
 Literal = {
     "AcceptedStates":{
-        #"T1": "Literal_String",
+        #"T1": "Error",
         "T2": "Literal_String",
         
     },
@@ -165,7 +165,7 @@ dict_Character = {key: "T1" for key in dict.fromkeys(letter+digit+single_string)
 dict_Character["'"]="T2"
 Single = {            # 작은따옴표 한번해봤음 아직안됨 '인식을못함 수정할예정
     "AcceptedStates":{
-        #"T1": "Single_Character",
+        #"T1": "Error",
         "T2": "Single_Character",
                            
     },
