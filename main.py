@@ -6,7 +6,7 @@ letters =letter + digit
 
 dict_Literal = {key: "T1" for key in dict.fromkeys(letters).keys()}
 dict_Literal['"']="T2"
-
+single_string = ['!', '@', '#', '$', '%', '^', '&', '*', "(", ')', '','-','+','=','/','|','.',',','?','~','`',' ']
 letter+=['_']
 dict_identifier = {key: "T1" for key in dict.fromkeys(letter).keys()} # 숫자가 들어가냐 안들어가냐
 letters = letter + ['0','1','2','3','4','5','6','7','8','9',]
@@ -99,14 +99,14 @@ Comparioson = {
         "T7": "COMPARISON",
     },
     "Table": {
-        "T0": {"=": "T1", ">": "T2", "<": "T3", "==": "T4","!=":"T5",">=":"T6","<=":"T7"},
-        "T1": {"=": "",   ">": "",   "<": "",   "==": "" , "!=":"",">=":"","<=":""},
-        "T2": {"=": "",   ">": "",   "<": "",   "==": ""  ,"!=":"",">=":"","<=":""},
-        "T3": {"=": "",   ">": "",   "<": "",   "==": "" , "!=":"",">=":"","<=":""},
-        "T4": {"=": "",   ">": "",   "<": "",   "==": "" , "!=":"",">=":"","<=":""},
-        "T5": {"=": "",   ">": "",   "<": "",   "==": "" , "!=":"",">=":"","<=":""},
-        "T6": {"=": "",   ">": "",   "<": "",   "==": "" , "!=":"",">=":"","<=":""},
-        "T7": {"=": "",   ">": "",   "<": "",   "==": "" , "!=":"",">=":"","<=":""},
+        "T0": {"=": "T1", ">": "T2", "<": "T3", "!": "T4"},
+        "T1": {"=": "T4",   ">": "",   "<": "",   "!": ""},
+        "T2": {"=": "T5",   ">": "",   "<": "",   "!": "" },
+        "T3": {"=": "T6",   ">": "",   "<": "",   "!": "" },
+        "T4": {"=": "T7",   ">": "",   "<": "",   "!": "" },
+        "T5": {"=": "",   ">": "",   "<": "",   "!": ""},
+        "T6": {"=": "",   ">": "",   "<": "",   "!": "" },
+        "T7": {"=": "",   ">": "",   "<": "",   "!": "" },
     }
 }
 OtherToken={
@@ -132,13 +132,27 @@ OtherToken={
         "T8": {"(": "",   "{": "",   "[": "",   ")": "" , "}":"","]":"",",":"",";":""},
     }
 }
-
-
+#dict_Character = {key: "T1" for key in dict.fromkeys(letter).keys()}
+dict_Character = {key: "T1" for key in dict.fromkeys(letter+digit+single_string).keys()}
+dict_Character["'"]="T2"
+Single = {            # 작은따옴표 한번해봤음 아직안됨 '인식을못함 수정할예정
+    "AcceptedStates":{
+        #"T1": "Single_Character",
+        "T2": "Single_Character",
+        
+    },
+    "Table":{
+    "T0":{"'":"T1"},
+    "T1":dict_Character,
+    "T2":{"'":""},
+    
+    }
+}
 #작은따음표 아직 ㅎ
 
 
 
-transitiontable =[Integer, Literal, ID,Operator,Comparioson,OtherToken]
+transitiontable =[Integer, Literal, ID,Operator,Comparioson,OtherToken,Single]
 
 
 
@@ -146,8 +160,8 @@ transitiontable =[Integer, Literal, ID,Operator,Comparioson,OtherToken]
 
 dfa = FiniteAutomaton()
 
-
-input_string='string str = "sa das dasd"'
+#에러사항 '*'같은거 할시 이상한 걸로 출력
+input_string="'#'5 3 int a >=2, ==; "
 
 
 lexeme = ""
@@ -159,6 +173,9 @@ for i,character in enumerate(input_string):
             nextState=dfa.PeekNextState(character,transitiontable,1)
         else:
             nextState=dfa.PeekNextState(character,transitiontable)
+        if(nextState=="에러"):
+            print("에러")
+            exit()
         if(nextState!="finish"):
             #lexeme+=character
             dfa.SetState(nextState)

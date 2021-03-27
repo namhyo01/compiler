@@ -15,8 +15,10 @@ class FiniteAutomaton:
  
     def PeekNextState(self, _input,_dfa,_sign=0):
         #print(_input)
+        if(self.transition == len(_dfa)):
+            return "에러"
         self.LoadTransitionTable(_dfa[self.transition])
-
+        
         if  _input not in self.table[self.currentState] and self.past==False: #없다면
             self.transition += 1
             return self.PeekNextState(_input,_dfa,_sign)
@@ -30,8 +32,8 @@ class FiniteAutomaton:
             self.past=True
             self.lexeme += _input
             #print(nextState)
-            if _sign==1 or self.table[nextState][_input]=="":
-
+            #if _sign==1 or self.table[nextState][_input]=="":
+            if _sign==1:
                 self.SetState(nextState)
                 return "finish"
             if nextState == "" :
