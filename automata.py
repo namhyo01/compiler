@@ -18,7 +18,8 @@ class FiniteAutomaton:
         if(self.transition == len(_dfa)):
             return "에러"
         self.LoadTransitionTable(_dfa[self.transition])
-        
+        if _input in self.table[self.currentState] and self.transition==0:
+            return "finish"
         if  _input not in self.table[self.currentState] and self.past==False: #없다면
             self.transition += 1
             return self.PeekNextState(_input,_dfa,_sign)

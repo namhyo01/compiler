@@ -20,34 +20,48 @@ close_symbols={'}':'RB',')':'RPAREN',']':'RSB'}
 #c
 
 
-#whitespace = {
-#    "AcceptedStates":{
-#        "T1": "whitespace",
-#        "T2": "whitespace",
-#        "T3": "whitespace",
-#    },
-#    "Table":{
-#    "T0":{" ":"T1","\n":"T2","\t":"T3"},
-#    "T1":{" ":"","\n":"","\t":""},
-#    "T2":{" ":"","\n":"","\t":""},
-#    "T3":{" ":"","\n":"","\t":""}
-#    }
-#}
-#dfa표
-Integer = {
+whitespace = {
     "AcceptedStates":{
-        "T1": "Integer",
-        "T2": "Integer",
-        "T3": "Integer",
+        "T1": "whitespace",
+        "T2": "whitespace",
+        "T3": "whitespace",
     },
     "Table":{
-    "T0":{"0":"T3","-":"T1","1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
-    "T1":{"1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
-    "T2":{"0":"T2","1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
+    "T0":{" ":"T1","\n":"T2","\t":"T3"},
+    "T1":{},
+    "T2":{},
     "T3":{}
     }
 }
-
+#dfa표
+#Integer = {
+#    "AcceptedStates":{
+#        "T1": "Integer",
+#        "T2": "Integer",
+#        "T3": "Integer",
+#    },
+#    "Table":{
+#    "T0":{"0":"T3","-":"T1","1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
+#    "T1":{"1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
+#    "T2":{"0":"T2","1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
+#    "T3":{}
+#    }
+#}
+Integer = {
+    "AcceptedStates":{
+        "T1": "Integer",
+        #"T2": "Zero",
+        #"T3": "Minus",
+        "T4": "Negative integer"
+    },
+    "Table":{
+    "T0":{"-":"T3","0":"T2","1":"T1","2":"T1","3":"T1","4":"T1","5":"T1","6":"T1","7":"T1","8":"T1","9":"T1"},
+    "T1":{"0":"T1","1":"T1","2":"T1","3":"T1","4":"T1","5":"T1","6":"T1","7":"T1","8":"T1","9":"T1"},
+    "T2":{},
+    "T3":{"1":"T4","2":"T4","3":"T4","4":"T4","5":"T4","6":"T4","7":"T4","8":"T4","9":"T4"},
+    "T4":{"0":"T4","1":"T4","2":"T4","3":"T4","4":"T4","5":"T4","6":"T4","7":"T4","8":"T4","9":"T4"},
+    }
+}
 Literal = {
     "AcceptedStates":{
         #"T1": "Literal_String",
@@ -97,16 +111,18 @@ Comparioson = {
         "T5": "COMPARISON",
         "T6": "COMPARISON",
         "T7": "COMPARISON",
+        
     },
     "Table": {
-        "T0": {"=": "T1", ">": "T2", "<": "T3", "!": "T4"},
-        "T1": {"=": "T5",},
-        "T2": {"=": "T6",    },
-        "T3": {"=": "T",  },
-        "T4": {"=":"T7" },
+        "T0": {"=": "T1", ">": "T2", "<": "T3", "!": "T8"},
+        "T1": {"=": "T4",},
+        "T2": {"=": "T6",},
+        "T3": {"=": "T7",},
+        "T4": {},
         "T5": {},
         "T6": {},
-        "T7": { },
+        "T7":{},
+        "T8": {"=": "T5" },
     }
 }
 
@@ -164,7 +180,7 @@ Single = {            # 작은따옴표 한번해봤음 아직안됨 '인식을�
 
 
 
-transitiontable =[Integer, Literal, ID,Operator,Comparioson,PAIRToken, OtherToken,Single]
+transitiontable =[whitespace,Integer, Literal, ID,Operator,Comparioson,PAIRToken, OtherToken,Single]
 
 
 
@@ -173,32 +189,28 @@ transitiontable =[Integer, Literal, ID,Operator,Comparioson,PAIRToken, OtherToke
 dfa = FiniteAutomaton()
 
 #에러사항 '*'같은거 할시 이상한 걸로 출력
-input_string="int main(()){;==;"
 
 
-lexeme = ""
-for i,character in enumerate(input_string):
-
-    if character not in white_space:
-
-        if(i==(len(input_string)-1)):
-            nextState=dfa.PeekNextState(character,transitiontable,1)
-        else:
-            nextState=dfa.PeekNextState(character,transitiontable)
-        if(nextState=="에러"):
-            print("에러")
-            exit()
-        if(nextState!="finish"):
-            #lexeme+=character
-            dfa.SetState(nextState)
-        else:#끝난경우
+with open('words.txt','r') as f:
+    lines = f.readlines()
+    for line in lines: #이 라인 을 파싱할거다
+    
+        for i,character in enumerate(line):
             
-            print(dfa.GetToken(),dfa.lexeme)
-            
-            dfa.Reset()
-
-    else:
-        if(dfa.lexeme!=""):
-            print(dfa.GetToken(),dfa.lexeme)
-        dfa.Reset()
+                if(i==(len(line)-1)):
+                    nextState=dfa.PeekNextState(character,transitiontable,1)
+                else:
+                    nextState=dfa.PeekNextState(character,transitiontable)
+                if(nextState=="에러"):
+                    print("에러")
+                    exit()
+                if(nextState!="finish"):
+                    #lexeme+=character
+                    dfa.SetState(nextState)
+                else:#끝난경우
+                    if(dfa.lexeme!=""):
+                        print(dfa.GetToken(),dfa.lexeme)
+                    #print(dfa.GetToken(),dfa.lexeme)
+                    dfa.Reset()
+                #dfa.Reset()
 

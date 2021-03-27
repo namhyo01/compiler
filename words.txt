@@ -1,5 +1,6 @@
+
 int func(int a, int b){
-    System.out.println("jhi");
+    printf("asdasd    asd")
     a=3;
     b = 45453123213212321      ;
     a = 3+56
