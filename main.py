@@ -22,9 +22,9 @@ close_symbols={'}':'RB',')':'RPAREN',']':'RSB'}
 
 whitespace = {
     "AcceptedStates":{
-       # "T1": "whitespace",
-       # "T2": "whitespace",
-       # "T3": "whitespace",
+        "T1": "whitespace",
+        "T2": "whitespace",
+        "T3": "whitespace",
     },
     "Table":{
     "T0":{" ":"T1","\n":"T2","\t":"T3"},

@@ -1,1 +1,15 @@
+
 (adasdadad- - asdadadad)
+=======
+int add(int a, int b) {
+    return (a + b);
+}
+
+int main(int argc) {
+    int a = 3;
+    int b = -7;
+    int c = a * b + c;
+    string s = "asd asdasd sdfgsad"";
+    return 0;
+}
+

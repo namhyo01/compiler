@@ -12,14 +12,16 @@ class FiniteAutomaton:
 
     def LoadTransitionTable(self, _dfa):
         self.table = _dfa["Table"]
+        self.acceptedStates={}
         self.acceptedStates.update(_dfa["AcceptedStates"])
  
     def PeekNextState(self, _input,_dfa,_sign=0):
+        #print(_input, self.transition)
         #print(_input)
         if(self.transition == len(_dfa)):
             return "에러"
         
-        self.LoadTransitionTable(_dfa[self.transition])
+        self.LoadTransitionTable(_dfa[self.transition]) # "whitespace"
         if _input in self.table[self.currentState] and self.transition==0:
             return "finish"
 
@@ -27,6 +29,7 @@ class FiniteAutomaton:
             self.transition += 1
             return self.PeekNextState(_input,_dfa,_sign)
         if(_input not in self.table[self.currentState] and self.past==True):
+            #print("hi",_input)
             print(self.GetToken(),self.lexeme)
             self.Reset()
             return self.PeekNextState(_input,_dfa,_sign)
@@ -45,20 +48,21 @@ class FiniteAutomaton:
             
 
             #if _sign==1 or self.table[nextState][_input]=="":
-            if _sign==1:
-                self.SetState(nextState)
-                return "finish"
-            if nextState == "" :
-                return "finish"
+            #if _sign==1:
+                #self.SetState(nextState)
+            #    return "finish"
+            #if nextState == "" :
+            #    return "finish"
             #if self.table[nextState][_input]=="":
             #    return ""
-            else:
-                return nextState
+            #else:
+            return nextState
  
     def SetState(self, _state):
         self.currentState = _state
  
     def GetToken(self):
+        #print(self.lexeme, self.transition,self.acceptedStates)
         if self.lexeme in Tokens.symbols:
             return Tokens.symbols[self.lexeme]
         if self.currentState in self.acceptedStates:
