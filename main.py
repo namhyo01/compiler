@@ -1,14 +1,16 @@
 import string 
-from asd import FiniteAutomaton
+from automata import FiniteAutomaton
 letter = list(string.ascii_lowercase)+list(string.ascii_uppercase)
 digit = ['0','1','2','3','4','5','6','7','8','9',' ']
-letters =letter+ digit
+letters =letter + digit
 
 dict_Literal = {key: "T1" for key in dict.fromkeys(letters).keys()}
 dict_Literal['"']="T2"
-dict_identifier = {key: "T1" for key in dict.fromkeys(letter).keys()}
-letters = letter + ['0','1','2','3','4','5','6','7','8','9','_']
-dict_identifier2 = {key: "T1" for key in dict.fromkeys(letters).keys()}
+
+letter+=['_']
+dict_identifier = {key: "T1" for key in dict.fromkeys(letter).keys()} # 숫자가 들어가냐 안들어가냐
+letters = letter + ['0','1','2','3','4','5','6','7','8','9',]
+dict_identifier2 = {key: "T1" for key in dict.fromkeys(letters).keys()} # 숫자가 들어가냐 안들어가냐
 
 white_space = [' ','\t','\n']
 symbols={'int':'INT','char':'CHAR','string':'STRING','boolean':'BOOLEAN','true':'TRUE','false':'FALSE','if':'IF','else':'ELSE','while':'WHILE','class':'CLASS','return':'RETURN'}
@@ -31,6 +33,7 @@ close_symbols={'}':'RB',')':'RPAREN',']':'RSB'}
 #    "T3":{" ":"","\n":"","\t":""}
 #    }
 #}
+#dfa표
 Integer = {
     "AcceptedStates":{
         "T1": "Integer",
@@ -41,18 +44,18 @@ Integer = {
     "T0":{"0":"T3","-":"T1","1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
     "T1":{"1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
     "T2":{"0":"T2","1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
-    "T3":{"0":""}
+    "T3":{"0":"","1":"","2":"","3":"","4":"","5":"","6":"","7":"","8":"","9":""}
     }
 }
 
 Literal = {
     "AcceptedStates":{
-        "T1": "Literal_String",
+        #"T1": "Literal_String",
         "T2": "Literal_String",
         
     },
     "Table":{
-    "T0":{'"':"T0"},
+    "T0":{'"':"T1"},
     "T1":dict_Literal,
     "T2":{'"':""},
     }
@@ -62,7 +65,7 @@ ID = {
         "T1": "ID",
     },
     "Table":{
-    "T0":dict_identifier,
+    "T0":dict_identifier, #_빼먹었다
     "T1":dict_identifier2,
     }
 }
@@ -144,12 +147,13 @@ transitiontable =[Integer, Literal, ID,Operator,Comparioson,OtherToken]
 dfa = FiniteAutomaton()
 
 
-input_string="123123+345345"
+input_string="int func(int a, int b);"
 
 
 lexeme = ""
 for i,character in enumerate(input_string):
     if character not in white_space:
+
         if(i==(len(input_string)-1)):
             nextState=dfa.PeekNextState(character,transitiontable,1)
         else:
@@ -158,10 +162,13 @@ for i,character in enumerate(input_string):
             #lexeme+=character
             dfa.SetState(nextState)
         else:#끝난경우
+            
             print(dfa.GetToken(),dfa.lexeme)
             
             dfa.Reset()
 
     else:
+        if(dfa.lexeme!=""):
+            print(dfa.GetToken(),dfa.lexeme)
         dfa.Reset()
 
