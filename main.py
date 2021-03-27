@@ -57,9 +57,10 @@ Integer = {
     "Table":{
     "T0":{"-":"T3","0":"T2","1":"T1","2":"T1","3":"T1","4":"T1","5":"T1","6":"T1","7":"T1","8":"T1","9":"T1"},
     "T1":{"0":"T1","1":"T1","2":"T1","3":"T1","4":"T1","5":"T1","6":"T1","7":"T1","8":"T1","9":"T1"},
-    "T2":{},
+    "T2":{"0":"T5","1":"T5","2":"T5","3":"T5","4":"T5","5":"T5","6":"T5","7":"T5","8":"T5","9":"T5"},
     "T3":{"1":"T4","2":"T4","3":"T4","4":"T4","5":"T4","6":"T4","7":"T4","8":"T4","9":"T4"},
     "T4":{"0":"T4","1":"T4","2":"T4","3":"T4","4":"T4","5":"T4","6":"T4","7":"T4","8":"T4","9":"T4"},
+    "T5":{},
     }
 }
 Literal = {
@@ -194,13 +195,15 @@ dfa = FiniteAutomaton()
 with open('words.txt','r') as f:
     lines = f.readlines()
     for line in lines: #이 라인 을 파싱할거다
-    
+        line+='\n'
+        #print(line)
+        dfa.digitletters=False
         for i,character in enumerate(line):
             #print(character)
-            if(i==(len(line)-1)):
-                nextState=dfa.PeekNextState(character,transitiontable,1)
-            else:
-                nextState=dfa.PeekNextState(character,transitiontable)
+            #if(i==(len(line)-1)):
+             #   nextState=dfa.PeekNextState(character,transitiontable,1)
+            #else:
+            nextState=dfa.PeekNextState(character,transitiontable)
             if(nextState=="에러"):
                 print("에러")
                 exit()
