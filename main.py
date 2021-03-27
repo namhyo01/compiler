@@ -147,7 +147,7 @@ transitiontable =[Integer, Literal, ID,Operator,Comparioson,OtherToken]
 dfa = FiniteAutomaton()
 
 
-input_string="><"
+input_string='string str = "sa das dasd"'
 
 
 lexeme = ""
