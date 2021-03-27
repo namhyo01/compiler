@@ -100,10 +100,10 @@ Comparioson = {
     },
     "Table": {
         "T0": {"=": "T1", ">": "T2", "<": "T3", "!": "T4"},
-        "T1": {"=": "T4",},
-        "T2": {"=": "T5",    },
-        "T3": {"=": "T6",  },
-        "T4": {"=": "T7", },
+        "T1": {"=": "T5",},
+        "T2": {"=": "T6",    },
+        "T3": {"=": "T",  },
+        "T4": {"=":"T7" },
         "T5": {},
         "T6": {},
         "T7": { },
@@ -173,7 +173,7 @@ transitiontable =[Integer, Literal, ID,Operator,Comparioson,PAIRToken, OtherToke
 dfa = FiniteAutomaton()
 
 #에러사항 '*'같은거 할시 이상한 걸로 출력
-input_string="int main(()){;;"
+input_string="int main(()){;==;"
 
 
 lexeme = ""
