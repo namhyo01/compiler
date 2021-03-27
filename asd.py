@@ -1,34 +1,45 @@
 
+import Tokens
 class FiniteAutomaton:
     def __init__(self):
         self.table = {}
         self.currentState = "T0"
         self.acceptedStates = {}
         self.transition = 0
- 
+        self.past = False
+        self.lexeme = ""
     def LoadTransitionTable(self, _dfa):
         self.table = _dfa["Table"]
         self.acceptedStates.update(_dfa["AcceptedStates"])
  
-    def PeekNextState(self, _input,_dfa):
+    def PeekNextState(self, _input,_dfa,_sign=0):
         self.LoadTransitionTable(_dfa[self.transition])
 
-        if  _input not in self.table[self.currentState]: #없다면
-            return "change"
-        nextState = self.table[self.currentState][_input]
-           
-        if nextState == "":
-            return "finish"
-        else:
-            return nextState
-    def GetState(self):
-        return self.currentState
+        if  _input not in self.table[self.currentState] and self.past==False: #없다면
+            
+            self.transition += 1
+            return self.PeekNextState(_input,_dfa)
+        if(_input not in self.table[self.currentState] and self.past==True):
+            print(self.GetToken(),self.lexeme)
+            self.Reset()
+            return self.PeekNextState(_input,_dfa)
+        if _input in self.table[self.currentState]:
+            nextState = self.table[self.currentState][_input]
+            self.past=True
+            self.lexeme += _input
+            if nextState == ""or _sign==1:
+                return "finish"
+            else:
+                return nextState
  
     def SetState(self, _state):
         self.currentState = _state
  
     def GetToken(self):
+        if self.lexeme in Tokens.symbols:
+            return Tokens.symbols[self.lexeme]
         if self.currentState in self.acceptedStates:
+            
             return self.acceptedStates[self.currentState]
         else:
             return "Unknown Token"
@@ -42,3 +53,5 @@ class FiniteAutomaton:
     def Reset(self):
         self.currentState = "T0"
         self.transition = 0
+        self.past=False
+        self.lexeme = ""

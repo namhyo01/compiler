@@ -7,19 +7,3 @@ close_symbols={'}':'RB',')':'RPAREN',']':'RSB'}
 
 
 white_space = [' ','\t','\n']
-for i,character in enumerate(input_string):
-    
-    dfa.LoadTransitionTable(transitiontable[transition])    
-    nextState = dfa.PeekNextState(character)
-    if(nextState!="finish"):
-        dfa.SetState(nextState)
-    elif(nextState="change"):
-
-    else:
-        print("토큰이 {}로 분류되었습니다.".format(dfa.GetToken()))
-        dfa.Reset()
-        
-print("토큰이 {}로 분류되었습니다.".format(dfa.GetToken()))
-# dfa를 사용을 마쳤으면 종료
-dfa.Reset()
-print("-----------")

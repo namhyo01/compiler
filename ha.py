@@ -135,7 +135,7 @@ OtherToken={
 
 
 
-transitiontable =[whitespace, Integer, Literal, ID,Operator,Comparioson,OtherToken]
+transitiontable =[Integer, Literal, ID,Operator,Comparioson,OtherToken]
 
 
 
@@ -144,13 +144,24 @@ transitiontable =[whitespace, Integer, Literal, ID,Operator,Comparioson,OtherTok
 dfa = FiniteAutomaton()
 
 
-input_string="adsdsds+dasds"
+input_string="123123+345345"
 
 
 lexeme = ""
 for i,character in enumerate(input_string):
     if character not in white_space:
-        dfa.PeekNextState(character,transitiontable)
+        if(i==(len(input_string)-1)):
+            nextState=dfa.PeekNextState(character,transitiontable,1)
+        else:
+            nextState=dfa.PeekNextState(character,transitiontable)
+        if(nextState!="finish"):
+            #lexeme+=character
+            dfa.SetState(nextState)
+        else:#끝난경우
+            print(dfa.GetToken(),dfa.lexeme)
+            
+            dfa.Reset()
+
     else:
         dfa.Reset()
 
