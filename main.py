@@ -147,11 +147,12 @@ transitiontable =[Integer, Literal, ID,Operator,Comparioson,OtherToken]
 dfa = FiniteAutomaton()
 
 
-input_string="int func(int a, int b);"
+input_string="><"
 
 
 lexeme = ""
 for i,character in enumerate(input_string):
+
     if character not in white_space:
 
         if(i==(len(input_string)-1)):

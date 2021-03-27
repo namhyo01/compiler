@@ -14,6 +14,7 @@ class FiniteAutomaton:
         self.acceptedStates.update(_dfa["AcceptedStates"])
  
     def PeekNextState(self, _input,_dfa,_sign=0):
+        #print(_input)
         self.LoadTransitionTable(_dfa[self.transition])
 
         if  _input not in self.table[self.currentState] and self.past==False: #없다면
@@ -24,14 +25,19 @@ class FiniteAutomaton:
             self.Reset()
             return self.PeekNextState(_input,_dfa,_sign)
         if _input in self.table[self.currentState]:
+            #print('qerqrewr')
             nextState = self.table[self.currentState][_input]
             self.past=True
             self.lexeme += _input
-            if _sign==1:
+            #print(nextState)
+            if _sign==1 or self.table[nextState][_input]=="":
+
                 self.SetState(nextState)
                 return "finish"
-            if nextState == "":
+            if nextState == "" :
                 return "finish"
+            #if self.table[nextState][_input]=="":
+            #    return ""
             else:
                 return nextState
  
