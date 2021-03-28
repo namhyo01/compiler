@@ -3,14 +3,18 @@ from automata import FiniteAutomaton
 letter = list(string.ascii_lowercase)+list(string.ascii_uppercase)
 digit = ['0','1','2','3','4','5','6','7','8','9',' ']
 letters =letter + digit
+tempo = ["'"]  #임시 수정
+tempo2 = ['"'] #임시 수정
+letters1 = letter + digit + tempo # "" 큰따옴표안에있는 작음따옴표를 만나면 unknown token으로 뜨길래 수정했음 이걸로 큰따옴표내에 있는 작은따옴표는 완전무시로 바꿈
 
-dict_Literal = {key: "T1" for key in dict.fromkeys(letters).keys()}
+dict_Literal = {key: "T1" for key in dict.fromkeys(letters1).keys()}
 dict_Literal['"']="T2"
-single_string = ['!', '@', '#', '$', '%', '^', '&', '*', "(", ')','-','+','=','/','|','.',',','?','~','`',' ']
+single_string = ['!', '@', '#', '$', '%', '^', '&', '*', "(", ')','-','+','=','/','|','.',',','?','~','`',' ',';',':','|']
 letter+=['_']
 dict_identifier = {key: "T1" for key in dict.fromkeys(letter).keys()} # 숫자가 들어가냐 안들어가냐
 letters = letter + ['0','1','2','3','4','5','6','7','8','9',]
 dict_identifier2 = {key: "T1" for key in dict.fromkeys(letters).keys()} # 숫자가 들어가냐 안들어가냐
+dict_identifier3 = {key: "T3" for key in dict.fromkeys(letters).keys()}# 2021-03-29 새벽수정
 
 white_space = [' ','\t','\n']
 symbols={'int':'INT','char':'CHAR','string':'STRING','boolean':'BOOLEAN','true':'TRUE','false':'FALSE','if':'IF','else':'ELSE','while':'WHILE','class':'CLASS','return':'RETURN'}
@@ -78,11 +82,14 @@ Literal = {
 }
 ID = {
     "AcceptedStates":{
-        "T1": "ID",
+        "T1": "ID", # 식별자가 문자만받은경우
+        "T2": "ID"  # 식별자가 정수로 끝나는경우 letter를 다시받으면 멸망
     },
     "Table":{
     "T0":dict_identifier, #_빼먹었다
-    "T1":dict_identifier2,
+    "T1":{"0":"T2","1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2","a":"T1","b":"T1","c":"T1","d":"T1","e":"T1","f":"T1","g":"T1","h":"T1","i":"T1","j":"T1","k":"T1","l":"T1","m":"T1","n":"T1","o":"T1","p":"T1","q":"T1","r":"T1","s":"T1","t":"T1","u":"T1","v":"T1","w":"T1","x":"T1","y":"T1","z":"T1","A":"T1","B":"T1","C":"T1","D":"T1","E":"T1","F":"T1","G":"T1","H":"T1","I":"T1","J":"T1","K":"T1","L":"T1","M":"T1","N":"T1","O":"T1","P":"T1","Q":"T1","R":"T1","S":"T1","T":"T1","U":"T1","V":"T1","W":"T1","X":"T1","Y":"T1","Z":"T1"},
+    "T2":dict_identifier3,  # 문자다음에 숫자가 온경우 T2
+    "T3":dict_identifier3,  # 문자다음에 숫자가 온다음 문자가다시온경우 T3
     }
 }
 
@@ -123,7 +130,7 @@ Comparioson = {
         "T4": {},
         "T5": {},
         "T6": {},
-        "T7":{},
+        "T7": {},
         "T8": {"=": "T5" },
     }
 }
@@ -163,7 +170,7 @@ OtherToken={
 }
 
 #dict_Character = {key: "T1" for key in dict.fromkeys(letter).keys()}
-dict_Character = {key: "T2" for key in dict.fromkeys(letter+digit+single_string).keys()}
+dict_Character = {key: "T2" for key in dict.fromkeys(letter+digit+single_string+tempo2).keys()}  # tempo2를 추가로 받게해서 '"' 를인식하게함 작은따옴표내에 있는 큰따옴표
 dict_Character["'"]="T4"
 dict_Character2 = {key: "T3" for key in dict.fromkeys(letter+digit+single_string).keys()}
 dict_Character2["'"]="T4"
@@ -176,17 +183,17 @@ Single = {            # 작은따옴표 한번해봤음 아직안됨 '인식을�
     },
     "Table":{
     "T0":{"'":"T1"},
-    "T1":dict_Character,
+    "T1":dict_Character,                   
     "T2":dict_Character2,
     "T3":{key: "T3" for key in dict.fromkeys(letter+digit+single_string+["'"]).keys()},
     "T4":{}
     }
 }
-#작은따음표 아직 ㅎ
 
 
 
-transitiontable =[whitespace,Integer, Literal, ID,Operator,Comparioson,PAIRToken, Single,OtherToken]
+
+transitiontable =[whitespace, Integer, Literal, ID, Operator, Comparioson, PAIRToken, Single, OtherToken]
 
 
 
