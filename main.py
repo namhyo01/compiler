@@ -56,11 +56,12 @@ Integer = {
     },
     "Table":{
     "T0":{"-":"T3","0":"T2","1":"T1","2":"T1","3":"T1","4":"T1","5":"T1","6":"T1","7":"T1","8":"T1","9":"T1"},
-    "T1":{"0":"T1","1":"T1","2":"T1","3":"T1","4":"T1","5":"T1","6":"T1","7":"T1","8":"T1","9":"T1","a":"T5","b":"T5","c":"T5","d":"T5","e":"T5","f":"T5","g":"T5","h":"T5","i":"T5","j":"T5","k":"T5","l":"T5","m":"T5","n":"T5","o":"T5","p":"T5","q":"T5","r":"T5","s":"T5","t":"T5","u":"T5","v":"T5","w":"T5","x":"T5","y":"T5","z":"T5","A":"T5","B":"T5","C":"T5","D":"T5","E":"T5","F":"T5","G":"T5","H":"T5","I":"T5","J":"T5","K":"T5","L":"T5","M":"T5","N":"T5","O":"T5","P":"T5","Q":"T5","R":"T5","S":"T5","T":"T5","U":"T5","V":"T5","X":"T5","Y":"T5","Z":"T5"},
-    "T2":{"0":"T5","1":"T5","2":"T5","3":"T5","4":"T5","5":"T5","6":"T5","7":"T5","8":"T5","9":"T5","a":"T5","b":"T5","c":"T5","d":"T5","e":"T5","f":"T5","g":"T5","h":"T5","i":"T5","j":"T5","k":"T5","l":"T5","m":"T5","n":"T5","o":"T5","p":"T5","q":"T5","r":"T5","s":"T5","t":"T5","u":"T5","v":"T5","w":"T5","x":"T5","y":"T5","z":"T5","A":"T5","B":"T5","C":"T5","D":"T5","E":"T5","F":"T5","G":"T5","H":"T5","I":"T5","J":"T5","K":"T5","L":"T5","M":"T5","N":"T5","O":"T5","P":"T5","Q":"T5","R":"T5","S":"T5","T":"T5","U":"T5","V":"T5","X":"T5","Y":"T5","Z":"T5"},
+    "T1":{"0":"T1","1":"T1","2":"T1","3":"T1","4":"T1","5":"T1","6":"T1","7":"T1","8":"T1","9":"T1","a":"T6","b":"T6","c":"T6","d":"T6","e":"T6","f":"T6","g":"T6","h":"T6","i":"T6","j":"T6","k":"T6","l":"T6","m":"T6","n":"T6","o":"T6","p":"T6","q":"T6","r":"T6","s":"T6","t":"T6","u":"T6","v":"T6","w":"T6","x":"T6","y":"T6","z":"T6","A":"T6","B":"T6","C":"T6","D":"T6","E":"T6","F":"T6","G":"T6","H":"T6","I":"T6","J":"T6","K":"T6","L":"T6","M":"T6","N":"T6","O":"T6","P":"T6","Q":"T6","R":"T6","S":"T6","T":"T6","U":"T6","V":"T6","W":"T6","X":"T6","Y":"T6","Z":"T6","_":"T6"},
+    "T2":{"0":"T5","1":"T5","2":"T5","3":"T5","4":"T5","5":"T5","6":"T5","7":"T5","8":"T5","9":"T5","a":"T6","b":"T6","c":"T6","d":"T6","e":"T6","f":"T6","g":"T6","h":"T6","i":"T6","j":"T6","k":"T6","l":"T6","m":"T6","n":"T6","o":"T6","p":"T6","q":"T6","r":"T6","s":"T6","t":"T6","u":"T6","v":"T6","w":"T6","x":"T6","y":"T6","z":"T6","A":"T6","B":"T6","C":"T6","D":"T6","E":"T6","F":"T6","G":"T6","H":"T6","I":"T6","J":"T6","K":"T6","L":"T6","M":"T6","N":"T6","O":"T6","P":"T6","Q":"T6","R":"T6","S":"T6","T":"T6","U":"T6","V":"T6","W":"T6","X":"T6","Y":"T6","Z":"T6","_":"T6"},
     "T3":{"1":"T4","2":"T4","3":"T4","4":"T4","5":"T4","6":"T4","7":"T4","8":"T4","9":"T4"},
-    "T4":{"0":"T4","1":"T4","2":"T4","3":"T4","4":"T4","5":"T4","6":"T4","7":"T4","8":"T4","9":"T4","a":"T5","b":"T5","c":"T5","d":"T5","e":"T5","f":"T5","g":"T5","h":"T5","i":"T5","j":"T5","k":"T5","l":"T5","m":"T5","n":"T5","o":"T5","p":"T5","q":"T5","r":"T5","s":"T5","t":"T5","u":"T5","v":"T5","w":"T5","x":"T5","y":"T5","z":"T5","A":"T5","B":"T5","C":"T5","D":"T5","E":"T5","F":"T5","G":"T5","H":"T5","I":"T5","J":"T5","K":"T5","L":"T5","M":"T5","N":"T5","O":"T5","P":"T5","Q":"T5","R":"T5","S":"T5","T":"T5","U":"T5","V":"T5","X":"T5","Y":"T5","Z":"T5"},
-    "T5":{},
+    "T4":{"0":"T4","1":"T4","2":"T4","3":"T4","4":"T4","5":"T4","6":"T4","7":"T4","8":"T4","9":"T4","a":"T6","b":"T6","c":"T6","d":"T6","e":"T6","f":"T6","g":"T6","h":"T6","i":"T6","j":"T6","k":"T6","l":"T6","m":"T6","n":"T6","o":"T6","p":"T6","q":"T6","r":"T6","s":"T6","t":"T6","u":"T6","v":"T6","w":"T6","x":"T6","y":"T6","z":"T6","A":"T6","B":"T6","C":"T6","D":"T6","E":"T6","F":"T6","G":"T6","H":"T6","I":"T6","J":"T6","K":"T6","L":"T6","M":"T6","N":"T6","O":"T6","P":"T6","Q":"T6","R":"T6","S":"T6","T":"T6","U":"T6","V":"T6","W":"T6","X":"T6","Y":"T6","Z":"T6","_":"T6"},
+    "T5":{"0":"T5","1":"T5","2":"T5","3":"T5","4":"T5","5":"T5","6":"T5","7":"T5","8":"T5","9":"T5","a":"T6","b":"T6","c":"T6","d":"T6","e":"T6","f":"T6","g":"T6","h":"T6","i":"T6","j":"T6","k":"T6","l":"T6","m":"T6","n":"T6","o":"T6","p":"T6","q":"T6","r":"T6","s":"T6","t":"T6","u":"T6","v":"T6","w":"T6","x":"T6","y":"T6","z":"T6","A":"T6","B":"T6","C":"T6","D":"T6","E":"T6","F":"T6","G":"T6","H":"T6","I":"T6","J":"T6","K":"T6","L":"T6","M":"T6","N":"T6","O":"T6","P":"T6","Q":"T6","R":"T6","S":"T6","T":"T6","U":"T6","V":"T6","W":"T6","X":"T6","Y":"T6","Z":"T6","_":"T6"},
+    "T6":{"0":"T6","1":"T6","2":"T6","3":"T6","4":"T6","5":"T6","6":"T6","7":"T6","8":"T6","9":"T6","a":"T6","b":"T6","c":"T6","d":"T6","e":"T6","f":"T6","g":"T6","h":"T6","i":"T6","j":"T6","k":"T6","l":"T6","m":"T6","n":"T6","o":"T6","p":"T6","q":"T6","r":"T6","s":"T6","t":"T6","u":"T6","v":"T6","w":"T6","x":"T6","y":"T6","z":"T6","A":"T6","B":"T6","C":"T6","D":"T6","E":"T6","F":"T6","G":"T6","H":"T6","I":"T6","J":"T6","K":"T6","L":"T6","M":"T6","N":"T6","O":"T6","P":"T6","Q":"T6","R":"T6","S":"T6","T":"T6","U":"T6","V":"T6","W":"T6","X":"T6","Y":"T6","Z":"T6","_":"T6"},#문자에 숫자가 나오는경우
     }
 }
 Literal = {
@@ -162,26 +163,30 @@ OtherToken={
 }
 
 #dict_Character = {key: "T1" for key in dict.fromkeys(letter).keys()}
-dict_Character = {key: "T1" for key in dict.fromkeys(letter+digit+single_string).keys()}
-dict_Character["'"]="T2"
+dict_Character = {key: "T2" for key in dict.fromkeys(letter+digit+single_string).keys()}
+dict_Character["'"]="T4"
+dict_Character2 = {key: "T3" for key in dict.fromkeys(letter+digit+single_string).keys()}
+dict_Character2["'"]="T4"
+
 Single = {            # 작은따옴표 한번해봤음 아직안됨 '인식을못함 수정할예정
     "AcceptedStates":{
         #"T1": "Error",
-        "T2": "Single_Character",
+        "T4": "Single_Character",
                            
     },
     "Table":{
     "T0":{"'":"T1"},
     "T1":dict_Character,
-    "T2":{},
-    
+    "T2":dict_Character2,
+    "T3":{key: "T3" for key in dict.fromkeys(letter+digit+single_string+["'"]).keys()},
+    "T4":{}
     }
 }
 #작은따음표 아직 ㅎ
 
 
 
-transitiontable =[whitespace,Integer, Literal, ID,Operator,Comparioson,PAIRToken, OtherToken,Single]
+transitiontable =[whitespace,Integer, Literal, ID,Operator,Comparioson,PAIRToken, Single,OtherToken]
 
 
 
@@ -220,15 +225,21 @@ with open('words.txt','r') as f:
         #       else
         #           lsbrackets.remove('3')
 
-
     for line in lines: #이 라인 을 파싱할거다
-    
+
+        line+='\n'
+        #print(line)
+        dfa.digitletters=False
         for i,character in enumerate(line):
             #print(character)
-            if(i==(len(line)-1)):
-                nextState=dfa.PeekNextState(character,transitiontable,1)
-            else:
-                nextState=dfa.PeekNextState(character,transitiontable)
+            #if(i==(len(line)-1)):
+            #    nextState=dfa.PeekNextState(character,transitiontable,1)
+            #else:
+            #    nextState=dfa.PeekNextState(character,transitiontable)
+            #if(i==(len(line)-1)):
+             #   nextState=dfa.PeekNextState(character,transitiontable,1)
+            #else:
+            nextState=dfa.PeekNextState(character,transitiontable)
             if(nextState=="에러"):
                 print("에러")
                 exit()
@@ -241,8 +252,5 @@ with open('words.txt','r') as f:
                 #print(dfa.GetToken(),dfa.lexeme)
                 dfa.Reset()
             #dfa.Reset()
-    
-  
-
 # if len(brackets)!=0 or len(brackets)!=0 or len(brackets)!=0 # 파일읽기가 끝났을때 스택에 하나라도 남았으면
 # return -1  # 오류처리
