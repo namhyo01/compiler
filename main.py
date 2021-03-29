@@ -14,7 +14,7 @@ letter+=['_']
 dict_identifier = {key: "T1" for key in dict.fromkeys(letter).keys()} # 숫자가 들어가냐 안들어가냐
 letters = letter + ['0','1','2','3','4','5','6','7','8','9',]
 dict_identifier2 = {key: "T1" for key in dict.fromkeys(letters).keys()} # 숫자가 들어가냐 안들어가냐
-dict_identifier3 = {key: "T3" for key in dict.fromkeys(letters).keys()}# 2021-03-29 새벽수정
+
 
 white_space = [' ','\t','\n']
 symbols={'int':'INT','char':'CHAR','string':'STRING','boolean':'BOOLEAN','true':'TRUE','false':'FALSE','if':'IF','else':'ELSE','while':'WHILE','class':'CLASS','return':'RETURN'}
@@ -87,9 +87,8 @@ ID = {
     },
     "Table":{
     "T0":dict_identifier, #_빼먹었다
-    "T1":{"0":"T2","1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2","a":"T1","b":"T1","c":"T1","d":"T1","e":"T1","f":"T1","g":"T1","h":"T1","i":"T1","j":"T1","k":"T1","l":"T1","m":"T1","n":"T1","o":"T1","p":"T1","q":"T1","r":"T1","s":"T1","t":"T1","u":"T1","v":"T1","w":"T1","x":"T1","y":"T1","z":"T1","A":"T1","B":"T1","C":"T1","D":"T1","E":"T1","F":"T1","G":"T1","H":"T1","I":"T1","J":"T1","K":"T1","L":"T1","M":"T1","N":"T1","O":"T1","P":"T1","Q":"T1","R":"T1","S":"T1","T":"T1","U":"T1","V":"T1","W":"T1","X":"T1","Y":"T1","Z":"T1"},
-    "T2":dict_identifier3,  # 문자다음에 숫자가 온경우 T2
-    "T3":dict_identifier3,  # 문자다음에 숫자가 온다음 문자가다시온경우 T3
+    "T1":dict_identifier2,
+
     }
 }
 
