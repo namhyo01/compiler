@@ -2,6 +2,7 @@ import string
 from automata import FiniteAutomaton
 letter = list(string.ascii_lowercase)+list(string.ascii_uppercase)
 digit = ['0','1','2','3','4','5','6','7','8','9',' ']
+digit1 = ['0','1','2','3','4','5','6','7','8','9']
 letters =letter + digit
 tempo = ["'"]  #임시 수정
 tempo2 = ['"'] #임시 수정
@@ -9,7 +10,7 @@ letters1 = letter + digit + tempo # "" 큰따옴표안에있는 작음따옴표�
 
 dict_Literal = {key: "T1" for key in dict.fromkeys(letters1).keys()}
 dict_Literal['"']="T2"
-single_string = ['!', '@', '#', '$', '%', '^', '&', '*', "(", ')','-','+','=','/','|','.',',','?','~','`',' ',';',':','|']
+single_string = ['!', '@', '#', '$', '%', '^', '&', '*', "(", ')','-','+','=','/','|','.',',','?','~','`',';',':','|']
 letter+=['_']
 dict_identifier = {key: "T1" for key in dict.fromkeys(letter).keys()} # 숫자가 들어가냐 안들어가냐
 letters = letter + ['0','1','2','3','4','5','6','7','8','9',]
@@ -169,9 +170,11 @@ OtherToken={
 }
 
 #dict_Character = {key: "T1" for key in dict.fromkeys(letter).keys()}
-dict_Character = {key: "T2" for key in dict.fromkeys(letter+digit+single_string+tempo2).keys()}  # tempo2를 추가로 받게해서 '"' 를인식하게함 작은따옴표내에 있는 큰따옴표
+
+dict_Character = {key: "T2" for key in dict.fromkeys(letter+digit).keys()}  # tempo2를 추가로 받게해서 '"' 를인식하게함 작은따옴표내에 있는 큰따옴표
+dict_Character = {key: "T3" for key in dict.fromkeys(single_string).keys()}
 dict_Character["'"]="T4"
-dict_Character2 = {key: "T3" for key in dict.fromkeys(letter+digit+single_string).keys()}
+dict_Character2 = {key: "T3" for key in dict.fromkeys(letter+digit1+single_string).keys()}
 dict_Character2["'"]="T4"
 
 Single = {            # 작은따옴표 한번해봤음 아직안됨 '인식을못함 수정할예정
