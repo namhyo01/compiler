@@ -30,6 +30,7 @@ class FiniteAutomaton:
         if(_input not in self.table[self.currentState] and self.past==True):
             # print(self.GetToken(),self.lexeme)
             # self.Reset()
+            self.lexeme+=_input
             return "need_continue"
         if ('-' == _input):
             if(self.digitletters):

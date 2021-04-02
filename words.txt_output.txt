@@ -1,1 +1,17 @@
+ID	int 
+ID	main(
+LPAREN	()
+RPAREN	){
+LB	{
+
+ID	int 
+ID	a 
+ASSIGN	= 
+Integer	3;
+SEMI	;
+
+ID	int 
+ID	b=
+ASSIGN	=-
+4th file's line errors ERROR TOKEN VARIABLE  -0 in this 	int b=-05;
 

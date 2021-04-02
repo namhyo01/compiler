@@ -300,29 +300,18 @@ with open(filename,'r') as f:
         
         dfa.digitletters=False
         for i,character in enumerate(line):
-            #print(character)
-            #if(i==(len(line)-1)):
-            #    nextState=dfa.PeekNextState(character,transitiontable,1)
-            #else:
-            #    nextState=dfa.PeekNextState(character,transitiontable)x
-            #if(i==(len(line)-1)):
-             #   nextState=dfa.PeekNextState(character,transitiontable,1)
-            #else:
-            print(character)
+            
             nextState=dfa.PeekNextState(character,transitiontable)
-            print('asdas')
+            
             if nextState=="need_continue":
                 if(dfa.lexeme!=""):
                     #print(dfa.GetToken())
                     if dfa.GetToken() == "error":
-                        print('hi')
-                        print(character)
-                        print('hi')
-                        error_string = str(line_num)+"th file's line errors ERROR TOKEN VARIABLE  "  + str(character) + ' in this '+str(line)
+                        error_string = str(line_num)+"th file's line errors ERROR TOKEN VARIABLE  "  + str(dfa.lexeme) + ' in this '+str(line)
                         f2.write(error_string)
                         f2.close()
-                        
-                        exit()        
+                        exit()
+                    dfa.lexeme = dfa.lexeme[:-1]        
                     out = dfa.GetToken()
                     out+='\t'+dfa.lexeme+ '\n'
                     f2.write(out)
@@ -331,7 +320,7 @@ with open(filename,'r') as f:
                 nextState=dfa.PeekNextState(character,transitiontable)
             if(nextState=="error"):
                 #print('hi')
-                error_string = str(line_num)+"th file's line errors ERROR TOKEN VARIABLE  "  + str(character) + ' in this '+str(line)
+                error_string = str(line_num)+"th file's line errors ERROR TOKEN VARIABLE  "  + str(dfa.lexeme) + ' in this '+str(line)
                 f2.write(error_string)
                 f2.close()
                 #print(line_num, "th line errors ERROR UNKNOWN TOKEN VARIABEL",sep='')
@@ -341,8 +330,8 @@ with open(filename,'r') as f:
             else:#끝난경우
                 if(dfa.lexeme!=""):
                     if dfa.GetToken() == "error":
-                        print(character)
-                        error_string = str(line_num)+"th line errors ERROR TOKEN VARIABLE  "   + str(character) + ' in this '+str(line)
+                        #print(character)
+                        error_string = str(line_num)+"th line errors ERROR TOKEN VARIABLE  "   + str(dfa.lexeme) + ' in this '+str(line)
                         f2.write(error_string)
                         f2.close()
                         exit()
