@@ -1,5 +1,6 @@
 import string 
 from automata import FiniteAutomaton
+import sys
 letter = list(string.ascii_lowercase)+list(string.ascii_uppercase)
 digit = ['0','1','2','3','4','5','6','7','8','9',' ']
 digit1 = ['0','1','2','3','4','5','6','7','8','9']
@@ -285,62 +286,70 @@ dfa = FiniteAutomaton()
 
 #에러사항 '*'같은거 할시 이상한 걸로 출력
 
+filename = sys.argv[1]
+output_file = filename + '_output.txt'
 
-with open('words.txt','r') as f:
+with open(filename,'r') as f:
+    f2 = open(output_file,'w')
     lines = f.readlines()
-        # brackets = [  ] # ()
-        # sbrackets = [  ] # {}
-        # lsbrackets = [  ] # []
-     
-         # if character == '(':              # 단일문자가 lines 인지 character인지 몰라서 일단 lines 라 하고 여기다 집어넣음
-        #     brackets.append('1'))       
-        # if character == ')':
-        #       if len(brackets) == 0   # 만약 () 스택에 넣어진게 없을때 )를받으면
-        #           return -1    # 오류
-        #       else       
-        #           brackets.remove('1')
-        # if character == '{':
-        #     sbrackets.append('2'))
-        # if character == '}':
-        #       if len(sbrackets) == 0      # 만약 {} 스택에 없으면
-        #            return -1              # 오류처리
-        #       else
-        #           sbrackets.remove('2')
-        # if characters == '[':
-        #     lsbrackets.append('3'))
-        # if character == ']':
-        #       if len(lsbrackets) == 0     # 만약 [] 스택에 없으면
-        #           return -1               #오류처리
-        #       else
-        #           lsbrackets.remove('3')
 
-    line_num = 0 # 파일 줄수
+    line_num = 1 # 파일 줄수
     for line in lines: #이 라인 을 파싱할거다
         
         line+='\n' # 그 줄의 마지막을 의미
-        #print(line)
+        
         dfa.digitletters=False
         for i,character in enumerate(line):
             #print(character)
             #if(i==(len(line)-1)):
             #    nextState=dfa.PeekNextState(character,transitiontable,1)
             #else:
-            #    nextState=dfa.PeekNextState(character,transitiontable)
+            #    nextState=dfa.PeekNextState(character,transitiontable)x
             #if(i==(len(line)-1)):
              #   nextState=dfa.PeekNextState(character,transitiontable,1)
             #else:
+            print(character)
             nextState=dfa.PeekNextState(character,transitiontable)
-            if(nextState=="에러"):
-                print("에러")
+            print('asdas')
+            if nextState=="need_continue":
+                if(dfa.lexeme!=""):
+                    #print(dfa.GetToken())
+                    if dfa.GetToken() == "error":
+                        print('hi')
+                        print(character)
+                        print('hi')
+                        error_string = str(line_num)+"th file's line errors ERROR TOKEN VARIABLE  "  + str(character) + ' in this '+str(line)
+                        f2.write(character)
+                        f2.close()
+                        
+                        exit()        
+                    out = dfa.GetToken()
+                    out+='\t'+dfa.lexeme+ '\n'
+                    f2.write(out)
+                    #print(dfa.GetToken(),dfa.lexeme)
+                dfa.Reset()
+                nextState=dfa.PeekNextState(character,transitiontable)
+            if(nextState=="error"):
+                #print('hi')
+                error_string = str(line_num)+"th file's line errors ERROR TOKEN VARIABLE  "  + str(character) + ' in this '+str(line)
+                f2.write(error_string)
+                f2.close()
+                #print(line_num, "th line errors ERROR UNKNOWN TOKEN VARIABEL",sep='')
                 exit()
             if(nextState!="finish"):
-                
                 dfa.SetState(nextState)
             else:#끝난경우
                 if(dfa.lexeme!=""):
-                    print(dfa.GetToken(),dfa.lexeme)
+                    if dfa.GetToken() == "error":
+                        print(character)
+                        error_string = str(line_num)+"th line errors ERROR TOKEN VARIABLE  "   + str(character) + ' in this '+str(line)
+                        f2.write(error_string)
+                        f2.close()
+                        exit()
+                    out = dfa.GetToken()
+                    out+='\t'+dfa.lexeme + '\n'
+                    f2.write(out)
+                    #print(dfa.GetToken(),dfa.lexeme)
                 dfa.Reset()
         line_num += 1 # line줄수 증가
-            #dfa.Reset()
-# if len(brackets)!=0 or len(brackets)!=0 or len(brackets)!=0 # 파일읽기가 끝났을때 스택에 하나라도 남았으면
-# return -1  # 오류처리
+    f2.close()
