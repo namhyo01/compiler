@@ -319,7 +319,7 @@ with open(filename,'r') as f:
                         print(character)
                         print('hi')
                         error_string = str(line_num)+"th file's line errors ERROR TOKEN VARIABLE  "  + str(character) + ' in this '+str(line)
-                        f2.write(character)
+                        f2.write(error_string)
                         f2.close()
                         
                         exit()        
