@@ -39,120 +39,99 @@ whitespace = {
     }
 }
 
-# KeyWord = {
-#     "AcceptedStates":{
-#         "T2": "IF",
-#         "T6": "ELSE",
-#         "T11": "WHILE",
-#         "T16": "CLASS",
-#         "T22": "RETURN",
-#     },
-#     "Table":{
-#     "T0":{"i":"T1","e":"T3","w":"T7","c":"T12","r":"T17"},
-#     "T1":{"f":"T2"},
-#     "T2":{},
-#     "T3":{"l":"T4"},
-#     "T4":{"s":"T5"},
-#     "T5":{"e":"T6"},
-#     "T6":{},
-#     "T7":{"h":"T8"},
-#     "T8":{"i":"T9"},
-#     "T9":{"l":"T10"},
-#     "T10":{"e":"T11"},
-#     "T11":{},
-#     "T12":{"l":"T13"},
-#     "T13":{"a":"T14"},
-#     "T14":{"s":"T15"},
-#     "T15":{"s":"T16"},
-#     "T16":{},
-#     "T17":{"e":"T18"},
-#     "T18":{"t":"T19"},
-#     "T19":{"u":"T20"},
-#     "T20":{"r":"T21"},
-#     "T21":{"n":"T22"},
-#     "T22":{},
-#     }
-# }
+KeyWord = {
+    "AcceptedStates":{
+        "T2": "IF",
+        "T6": "ELSE",
+        "T11": "WHILE",
+        "T16": "CLASS",
+        "T22": "RETURN",
+    },
+    "Table":{
+    "T0":{"i":"T1","e":"T3","w":"T7","c":"T12","r":"T17"},
+    "T1":{"f":"T2"},
+    "T2":{},
+    "T3":{"l":"T4"},
+    "T4":{"s":"T5"},
+    "T5":{"e":"T6"},
+    "T6":{},
+    "T7":{"h":"T8"},
+    "T8":{"i":"T9"},
+    "T9":{"l":"T10"},
+    "T10":{"e":"T11"},
+    "T11":{},
+    "T12":{"l":"T13"},
+    "T13":{"a":"T14"},
+    "T14":{"s":"T15"},
+    "T15":{"s":"T16"},
+    "T16":{},
+    "T17":{"e":"T18"},
+    "T18":{"t":"T19"},
+    "T19":{"u":"T20"},
+    "T20":{"r":"T21"},
+    "T21":{"n":"T22"},
+    "T22":{},
+    }
+}
 
-# VariableType = {
-#     "AcceptedStates":{
-#         "T3": "INT",
-#         "T7": "CHAR",
-#         "T14": "BOOLEAN",
-#         "T20": "STRING",
-#      
-#     },
-#     "Table":{
-#     "T0":{"i":"T1","c":"T4","b":"T8","s":"T15"},
-#     "T1":{"n":"T2"},
-#     "T2":{"t":"T3"},
-#     "T3":{},
-#     "T4":{"h":"T5"},
-#     "T5":{"a":"T6"},
-#     "T6":{"r":"7"},
-#     "T7":{},
-#     "T8":{"o":"T9"},
-#     "T9":{"o":"T10"},
-#     "T10":{"l":"T11"},
-#     "T11":{"e":"T12"},
-#     "T12":{"a":"T13"},
-#     "T13":{"n":"T14"},
-#     "T14":{},
-#     "T15":{"t":"T16"},
-#     "T16":{"r":"T17"},
-#     "T17":{"i":"T18"},
-#     "T18":{"n":"T19"},
-#     "T19":{"g":"T20"},
-#     "T20":{},
-#     
-#     }
-# }
+VariableType = {
+    "AcceptedStates":{
+        "T3": "INT",
+        "T7": "CHAR",
+        "T14": "BOOLEAN",
+        "T20": "STRING",
+     
+    },
+    "Table":{
+    "T0":{"i":"T1","c":"T4","b":"T8","s":"T15"},
+    "T1":{"n":"T2"},
+    "T2":{"t":"T3"},
+    "T3":{},
+    "T4":{"h":"T5"},
+    "T5":{"a":"T6"},
+    "T6":{"r":"7"},
+    "T7":{},
+    "T8":{"o":"T9"},
+    "T9":{"o":"T10"},
+    "T10":{"l":"T11"},
+    "T11":{"e":"T12"},
+    "T12":{"a":"T13"},
+    "T13":{"n":"T14"},
+    "T14":{},
+    "T15":{"t":"T16"},
+    "T16":{"r":"T17"},
+    "T17":{"i":"T18"},
+    "T18":{"n":"T19"},
+    "T19":{"g":"T20"},
+    "T20":{},
+    
+    }
+}
 
-# BooleanString = {
-#     "AcceptedStates":{
-#         "T4": "TRUE",
-#         "T9": "FALSE",
-#        
-#      
-#     },
-#     "Table":{
-#     "T0":{"t":"T1","f":"T5"},
-#     "T1":{"r":"T2"},
-#     "T2":{"u":"T3"},
-#     "T3":{"e":"T4"},
-#     "T4":{},
-#     "T5":{"a":"T6"},
-#     "T6":{"l":"T7"},
-#     "T7":{"s":"T8"},
-#     "T8":{"e":"T9"},
-#     "T9":{},
-#    
-#     
-#     }
-# }
-
-
+BooleanString = {
+    "AcceptedStates":{
+        "T4": "TRUE",
+        "T9": "FALSE",
+       
+     
+    },
+    "Table":{
+    "T0":{"t":"T1","f":"T5"},
+    "T1":{"r":"T2"},
+    "T2":{"u":"T3"},
+    "T3":{"e":"T4"},
+    "T4":{},
+    "T5":{"a":"T6"},
+    "T6":{"l":"T7"},
+    "T7":{"s":"T8"},
+    "T8":{"e":"T9"},
+    "T9":{},
+   
+    
+    }
+}
 
 
-
-
-
-
-
-#dfa표
-#Integer = {
-#    "AcceptedStates":{
-#        "T1": "Integer",
-#        "T2": "Integer",
-#        "T3": "Integer",
-#    },
-#    "Table":{
-#    "T0":{"0":"T3","-":"T1","1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
-#    "T1":{"1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
-#    "T2":{"0":"T2","1":"T2","2":"T2","3":"T2","4":"T2","5":"T2","6":"T2","7":"T2","8":"T2","9":"T2"},
-#    "T3":{}
-#    }
-#}
 Integer = {
     "AcceptedStates":{
         "T1": "Integer",
@@ -273,8 +252,8 @@ OtherToken={
 #dict_Character = {key: "T1" for key in dict.fromkeys(letter).keys()}
 
 dict_Character = {key: "T2" for key in dict.fromkeys(letter+digit).keys()}  # tempo2를 추가로 받게해서 '"' 를인식하게함 작은따옴표내에 있는 큰따옴표
-dict_Character = {key: "T3" for key in dict.fromkeys(single_string).keys()}
-dict_Character["'"]="T4"
+#dict_Character = {key: "T3" for key in dict.fromkeys(single_string).keys()}
+#dict_Character["'"]="T4"
 dict_Character2 = {key: "T3" for key in dict.fromkeys(letter+digit1+single_string).keys()}
 dict_Character2["'"]="T4"
 
@@ -335,9 +314,10 @@ with open('words.txt','r') as f:
         #       else
         #           lsbrackets.remove('3')
 
+    line_num = 0 # 파일 줄수
     for line in lines: #이 라인 을 파싱할거다
-
-        line+='\n'
+        
+        line+='\n' # 그 줄의 마지막을 의미
         #print(line)
         dfa.digitletters=False
         for i,character in enumerate(line):
@@ -354,13 +334,13 @@ with open('words.txt','r') as f:
                 print("에러")
                 exit()
             if(nextState!="finish"):
-                #lexeme+=character
+                
                 dfa.SetState(nextState)
             else:#끝난경우
                 if(dfa.lexeme!=""):
                     print(dfa.GetToken(),dfa.lexeme)
-                #print(dfa.GetToken(),dfa.lexeme)
                 dfa.Reset()
+        line_num += 1 # line줄수 증가
             #dfa.Reset()
 # if len(brackets)!=0 or len(brackets)!=0 or len(brackets)!=0 # 파일읽기가 끝났을때 스택에 하나라도 남았으면
 # return -1  # 오류처리

@@ -1,8 +1,8 @@
-<<<<<<< HEAD
-"a"
-=======
+asdasd
+
+'''
 int char boolean String 
-0 01 1 22 123 56 a,-1, -0, -002, -222, -77 
+0  1 22 123 56 a,-1, , -222, -77 
 true false
 i j k abc ab_123 func1 func_ __func_bar__
 if else while class return
@@ -26,4 +26,3 @@ t
 
 a0a0a0
 'a' 
->>>>>>> c551d4163d437c1a4418f888e5e7c0485bb8c5a9

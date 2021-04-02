@@ -19,7 +19,8 @@ class FiniteAutomaton:
         #print(_input, self.transition)
         #print(_input)
         if(self.transition == len(_dfa)):
-            return "에러"
+            print('error')
+            exit()
         
         self.LoadTransitionTable(_dfa[self.transition]) # "whitespace"
         if _input in self.table[self.currentState] and self.transition==0:
@@ -73,7 +74,8 @@ class FiniteAutomaton:
                 
             return self.acceptedStates[self.currentState]
         else:
-            return "Unknown Token"
+            print("ERROR")
+            exit()
  
     def IsAccepted(self):
         if self.currentState in self.acceptedStates:
