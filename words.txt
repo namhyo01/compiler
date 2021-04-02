@@ -1,1 +1,29 @@
+<<<<<<< HEAD
 "a"
+=======
+int char boolean String 
+0 01 1 22 123 56 a,-1, -0, -002, -222, -77 
+true false
+i j k abc ab_123 func1 func_ __func_bar__
+if else while class return
++ - * / =
+< > == != <= >=
+; 
+
+,
+a a
+t
+,
+a a
+t
+{ds}
+[  ]
+(das005(da) 
+
+"dasdad", "Hello namhyo i'm testing12"
+'"'
+{dadasdas}, {dasda0dasd} {dad-=+>=<=42+int53 return}
+
+a0a0a0
+'a' 
+>>>>>>> c551d4163d437c1a4418f888e5e7c0485bb8c5a9
