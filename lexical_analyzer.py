@@ -1,5 +1,5 @@
 import string 
-from automata import FiniteAutomaton
+from automata import Automata
 import sys
 from Tokens import *
 
@@ -7,7 +7,7 @@ from Tokens import *
 transitiontable =[whitespace, Integer, Literal, ID, Operator, Comparioson, PAIRToken, Single, OtherToken]#Tramsition Table
 
 
-dfa = FiniteAutomaton() # 실행
+dfa = Automata() # 실행
 
 
 
@@ -26,7 +26,7 @@ with open(filename,'r') as f:
         dfa.digitletters=False
         for i,character in enumerate(line): 
             
-            nextState=dfa.PeekNextState(character,transitiontable) #dfa랑 맞는 지 실행 
+            nextState=dfa.NextState(character,transitiontable) #dfa랑 맞는 지 실행 
             
             if nextState=="need_continue": # need continue인경우는 다시 단어를 집어넣어서 실행해주어야하ㅑㄴ다.
                 if(dfa.lexeme!=""): # 문자열이 비어있지않는 경우
@@ -43,7 +43,7 @@ with open(filename,'r') as f:
                     f2.write(out)
                     
                 dfa.Reset() #dfa초기화
-                nextState=dfa.PeekNextState(character,transitiontable) #다시 그 단어를 집어넣는다.
+                nextState=dfa.NextState(character,transitiontable) #다시 그 단어를 집어넣는다.
             if(nextState=="error"): # 다음 스테이트가 에러라면
                 
                 error_string = str(line_num)+"th file's line errors ERROR TOKEN VARIABLE  "  + str(dfa.lexeme) + ' in this '+str(line)

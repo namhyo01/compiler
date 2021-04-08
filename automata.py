@@ -1,6 +1,7 @@
 
 from Tokens import *
-class FiniteAutomaton:
+
+class Automata:
     def __init__(self):
         self.table = {}
         self.currentState = "T0"
@@ -10,13 +11,14 @@ class FiniteAutomaton:
         self.lexeme = "" # 문자들이 테이블에 해당되면 문자열로 엮어주기위해존재
         self.digitletters=False  # -구분용
         self.check_digit_num = 0 
+
     def LoadTransitionTable(self, _dfa): # 트랜지션 테이블 생성
         self.table = _dfa["Table"]
         self.acceptedStates={}
         self.acceptedStates.update(_dfa["AcceptedStates"])#트랜지션 딕셔너리에서 AcceptedStates가 Key인 Values들을 집어넣는다.
  
  #_input은 입력 단어, _dfa는 트랜지션 테이블입니다.(리스트 형식)
-    def PeekNextState(self, _input,_dfa):
+    def NextState(self, _input,_dfa):
         
         if(self.transition == len(_dfa)): #그 만약에 transition테이블 전체를 다 돌았는데도 맞아 떨어지는 값이 없다면 에러를 내뱉는다
             return "error"
@@ -27,7 +29,7 @@ class FiniteAutomaton:
 
         if  _input not in self.table[self.currentState] and self.past==False: # 트랜지션 테이블에 해당하는 입력값이 없고 이전에 체크되던것이 없는 완전 새로운 단어인경우
             self.transition += 1 #다음 트랜지션 테이블을 찾으라고 1을 증가시키고
-            return self.PeekNextState(_input,_dfa) #다음것을 찾아 떠난다
+            return self.NextState(_input,_dfa) #다음것을 찾아 떠난다
         if(_input not in self.table[self.currentState] and self.past==True):#만약에 해당 트랜지션테이블에 해당되는 것이 없는데 이전에 체크되던것이 있다. 예를들어 띄어쓰기를 안한 int a=2인 경우 a랑 =과 2를 다 따로 분리하기 위해서 만든 코드입니다
             if(self.check_digit_num==2):
                 #이떈 -가 INTEGER가 아닌 OPERATOR이어야한다
@@ -66,7 +68,7 @@ class FiniteAutomaton:
 
     def GetToken(self):
         self.check_digit_num=0
-        if self.currentState in self.acceptedStates:
+        if self.IsAccepted():
             if(self.acceptedStates[self.currentState]=="Integer" or self.acceptedStates[self.currentState]=="ID"):
                 self.digitletters=True
             else:
